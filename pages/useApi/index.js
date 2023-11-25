@@ -6,14 +6,18 @@ const Index = () => {
   const router = useRouter();
 
   useEffect(() => {
-    axios.post("/api/hello") // Use relative path to the API route
+    axios
+      .post("/api/hello") // Use relative path to the API route
       .then((response) => {
         // Check if the response contains a redirect URL
         const redirectUrl = response.data.redirectUrl;
 
         if (redirectUrl) {
           // Use the Next.js router to navigate to the specified URL
-          router.replace(redirectUrl);
+
+          setTimeout(() => {
+            // router.replace(redirectUrl);
+          }, 5000);
         } else {
           // Handle other response scenarios
           console.log(response);

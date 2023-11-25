@@ -1,5 +1,12 @@
+import axios from "axios";
+import { useEffect } from "react";
+
 const Main = () => {
-  return <>tesF</>;
+  useEffect(() => {
+    axios.get("/api/post/1");
+  }, []);
+
+  return <>post/post</>;
 };
 
 export default Main;
