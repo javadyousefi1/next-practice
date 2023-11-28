@@ -6,6 +6,13 @@ const Ssr = (props) => {
   return (
     <>
       <h1 className="m-4 text-xl text-center text-blue-500">SSR</h1>
+      {props.data.map((item, index) => (
+        <>
+          <li>{item.name}</li>
+          <li>{item.email}</li>
+          <li>{item.userName}</li>
+        </>
+      ))}
     </>
   );
 };
@@ -13,11 +20,9 @@ const Ssr = (props) => {
 export default Ssr;
 
 export async function getServerSideProps() {
-  const response = await axios.get(
+  const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/users"
   );
-
-  const data = response.data;
 
   return {
     props: {
