@@ -7,11 +7,12 @@ const StaticPath = (props) => {
         SSG get static path
       </h1>
       <div className="flex justify-center">
-        {props.data && <li>{props.data.name}</li>}
+        {props.data ? <li>{props.data.name}</li> : <p>Loading...</p>}
       </div>
     </>
   );
 };
+
 export default StaticPath;
 
 export async function getStaticPaths() {
@@ -20,19 +21,30 @@ export async function getStaticPaths() {
   );
 
   const paths = data.map((post) => ({
-    params: { id: post.id + "" },
+    params: { id: post.id.toString() },
   }));
 
   return {
-    paths,
-    fallback: false,
+    paths: paths.slice(0, 3),
+    fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   const { data } = await axios.get(
     `https://jsonplaceholder.typicode.com/users/${params.id}`
   );
-  return { props: { data } };
+  if (!data) {
+    return {
+      props: {},
+      // Set the status to 404
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      data,
+    },
+  };
 }
