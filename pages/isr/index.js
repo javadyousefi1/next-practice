@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const Isr = ({ data }) => {
-  console.log(data);
 
   return (
     <>
