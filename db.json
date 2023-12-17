@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Next js",
+      "cost": 85
+    },
+    {
+      "id": 2,
+      "title": "React js",
+      "cost": 2000
+    },
+    {
+      "id": 3,
+      "title": "Node js",
+      "cost": 3000
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

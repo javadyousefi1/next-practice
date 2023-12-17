@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-const catchRoute = () => {
+const CatchRoute = () => {
   const { query } = useRouter();
 
   console.log(query.id);
@@ -8,4 +8,4 @@ const catchRoute = () => {
   return <>catch route : {query.id}</>;
 };
 
-export default catchRoute;
+export default CatchRoute;
